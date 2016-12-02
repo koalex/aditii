@@ -1,0 +1,9 @@
+dist/
+node_modules/
+.idea/
+errors.log
+stats.json
+ecosystem.json
+.DS_Store
+npm-debug.log
+.bash_history deleted
