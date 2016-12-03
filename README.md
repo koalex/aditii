@@ -23,5 +23,5 @@ yarn run build
 yarn start #(или npm start)
 
 # Запуск dev-сервера (режим разработки)
-yarn run dev #(или npm run dev)
+yarn run dev #(или npm run dev) и перейти на http://localhost:8080
 ```

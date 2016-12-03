@@ -2,13 +2,417 @@
   Author: ✰ Konstantin Aleksandrov ✰ https://github.com/koalex
 
   File Structure :
-    1.  Name
-    	1.1. Sub-name
+    1.  Common styles
+    2.  Header
+    	2.1. Title
+    	2.2. Search
+    3.  Nav
+    4.  Promo
+        4.1. Promo img
+        4.2. Shop button
+        4.3. Promo title
+        4.4. Promo description
+        4.5. Slider controls
+    5.  Carousel
+        5.1. Carousel controls
+        5.2. Carousel items
+    6.  Featured
+    7.  Footer
+        7.1. Footer nav
+        7.2. Copyright
 */
 
+@import './reset.less'
+@import './vars.styl'
+@import './assets/fonts/bebasneue/bebasneue.css'
+@import './assets/fonts/lobster/lobster.css'
+@import './assets/fonts/opensans/opensans.css'
+
+
 /************************
-  1. Name
+  1. Common styles
+************************/
+.wrapper
+  min-width 1024px
+
+.container
+  margin auto
+  max-width 1024px
+  box-sizing border-box
+
+.money
+  height 33px
+  font-family 'Bebas Neue'
+  font-size 33px
+  color #a1a1a1
+
+.card-title
+  max-width 75px
+  font-family 'Bebas Neue'
+  font-size 27px
+  color #afafaf
+  line-height 1
+  &.card-title_nowrap
+    white-space nowrap
+
+.card-btn
+  display inline-block
+  padding 0 15px
+  height 32px
+  font-family 'Bebas Neue'
+  font-size 19px
+  line-height 33px
+  text-decoration none
+  text-transform uppercase
+  color #fff
+  background main-green-3
+  border-radius 3px
+  box-sizing border-box
+
+.icon
+  display inline-block
+  &-basket
+    background url(./assets/img/icon-basket.svg) 0 0 no-repeat
+  &-search
+    background url(./assets/img/icon-search.svg) 0 0 no-repeat
+
+/************************
+  2. Header
+************************/
+.header
+  & .container
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items center
+    padding-left 20px
+    padding-right 20px
+    min-height 82px
+
+  /* 2.1. Title */
+  &__title
+    font-family Lobster
+    font-size 49px
+    color main-green-4
+    & a
+      color main-green-4
+      text-decoration none
+
+/* 2.2. Search */
+.search-form
+  w = 435px
+  h = 33px
+  width w
+  height h
+  > label
+    position relative
+    display: inline-block
+  &__input
+    padding-right 25px
+    width w
+    height h
+    border 1px solid #e1e1e1
+    box-sizing border-box
+  &__icon
+    icon = 22px
+    position absolute
+    top ((h - icon)/2)
+    right 2px
+    width icon
+    height icon
+
+/* 2.3. Basket */
+.basket
+  display flex
+  align-items center
+  &__icon
+    margin-right 17px
+    width 42px
+    height 37px
+    cursor pointer
+
+/************************
+  3. Nav
+************************/
+.nav
+  background main-green
+  & .container
+    text-align center
+  &-list
+    display flex
+    height 36px
+    align-items center
+    line-height 1
+    &__item
+      padding-left 18px
+      padding-right 18px
+      height 18px
+      border-left 2px solid #fff
+      &:first-child
+        border none
+  &-link
+    font-family 'Bebas Neue'
+    font-size 21px
+    color #fff
+    white-space nowrap
+    text-decoration none
+    text-transform uppercase
+    & > span
+      white-space nowrap
+      vertical-align bottom
+
+/************************
+  4. Promo
+************************/
+promo-img-w    = 280px
+promo-img-h    = 326px
+img-text-space = 100px
+
+.promo
+  min-height 446px
+  background main-green-1
+
+.slider
+  padding 65px 160px 30px 75px
+
+.slides-list__item
+  white-space nowrap
+  & *
+    white-space normal
+
+/* 4.1. Promo img */
+.promo-img
+  position relative
+  display inline-block
+  margin-right img-text-space
+  width promo-img-w
+  height promo-img-h
+  background url(./assets/img/promo-img.png) 0 0 no-repeat
+  background-size cover
+  &:after
+    w = 213px
+    h = 24px
+    content ''
+    position absolute
+    display inline-block
+    width w
+    height h
+    background url(./assets/img/promo-shadow.png) 0 0 no-repeat
+    bottom -(h/2)
+    left 'calc(50% - %s)' % (w/2)
+  @media (min-resolution: 144dpi),(min-resolution: 192dpi),(min-resolution: 2dppx)
+    background url(./assets/img/promo-img@2x.png) 0 0 no-repeat
+    background-size cover
+
+/* 4.2. Shop button */
+.promo__btn
+  display inline-block
+  margin-top 29px
+  padding-left 25px
+  padding-right 25px
+  height 46px
+  font-family 'Bebas Neue'
+  font-size 27px
+  line-height 47px
+  color #fff
+  border 3px solid #fff
+  border-radius 5px
+  box-sizing border-box
+
+.promo-info
+  display inline-block
+  max-width 405px
+  vertical-align top
+
+  /* 4.3. Promo title */
+  &__title
+    font-family 'Bebas Neue'
+    font-size 61px
+    line-height 0.885
+    color #fff
+    font-weight bold
+
+  /* 4.4. Promo description */
+  &__desc
+    overflow hidden
+    max-height 80px
+    font-family 'Open Sans'
+    font-size 17px
+    color #fff
+    line-height 1.65
+    word-wrap break-word
+
+/* 4.5. Slider controls */
+.slider-controls__item
+  display inline-block
+  margin-left 10px
+  background #fff
+  width 9px
+  height 9px
+  border-radius 50%
+  cursor pointer
+  &_active
+    opacity .6
+  &:first-child
+    margin-left img-text-space + promo-img-w
+
+/************************
+  5. Carousel
+************************/
+h = 190px
+
+.carousel
+  overflow hidden
+
+/* 5.1. Carousel controls */
+.carousel__controls
+  _h = 88px
+  position relative
+  top ((h / 2) - (_h / 2))
+  float right
+  display inline-block
+  margin-right 32px
+  width 29px
+  height _h
+  background url(./assets/img/arrow.svg) 0 0 no-repeat
+  cursor pointer
+  &:first-child
+    float left
+    margin-left 32px
+    transform rotate(180deg)
+
+/* 5.2. Carousel items */
+.carousel-list
+  height h
+  font-size 0
+
+.carousel-list__item
+  display inline-block
+  padding-top 30px
+  padding-right 65px
+  padding-bottom 20px
+  padding-left 17px
+  width 33.33%
+  height 100%
+  font-size normal
+  border-left 1px solid #e7e7e7
+  box-sizing border-box
+  &:first-child
+    border-left none
+
+.carousel-img
+  flex-grow 1
+  align-self stretch
+  background url(./assets/img/img-1.jpg) 0 0 no-repeat
+  background-size cover
+  @media (min-resolution: 144dpi),(min-resolution: 192dpi),(min-resolution: 2dppx)
+    background url(./assets/img/img-1@2x.jpg) 0 0 no-repeat
+    background-size cover
+
+.carousel-item
+  display flex
+  justify-content space-between
+  width 100%
+  height 100%
+  & .card-btn
+    margin-top 20px
+
+
+/************************
+  6. Featured
+************************/
+featured-card-w = 253px
+featured-card-h = 255px
+
+.featured
+  &__bg
+    height 67px
+    line-height 67px
+    background main-green-5
+  &__title
+    color #fff
+    font-family 'Bebas Neue'
+    font-size 31px
+    text-transform uppercase
+  & .container
+    padding-left 58px
+    padding-right 58px
+  & .money
+    margin-right 15px
+
+.featured-cards
+  display flex
+  flex-wrap wrap
+  justify-content space-between
+
+.featured-cards__item
+  display flex
+  flex-direction column
+  margin-top 45px
+  padding-bottom 30px
+  width featured-card-w
+  height featured-card-h
+  border 1px solid #e4e4e4
+  border-bottom-width 5px
+  border-bottom-color main-green-3
+  border-bottom-style solid
+  box-shadow 0 0 2px #e4e4e4
+  box-sizing border-box
+  transition 1s border-bottom-color 0s linear
+  &:hover
+    border-bottom-color #ccc
+    transition .2s border-bottom-color 0s linear
+
+.featured-card-img
+  flex-grow 1
+  background url(./assets/img/img-3.jpg) 0 0 no-repeat
+  background-size contain
+  @media (min-resolution: 144dpi),(min-resolution: 192dpi),(min-resolution: 2dppx)
+    background url(./assets/img/img-3@2x.jpg) 0 0 no-repeat
+    background-size contain
+
+.featured-card-info
+  align-self center
+  overflow hidden
+
+.card-buy
+  display flex
+  align-items center
+  margin-top 2px
+
+/************************
+  7. Footer
 ************************/
 
+.footer
+  margin-top 45px
+  padding 40px 0
+  font-family 'Open Sans'
+  background main-green-4
+  box-sizing border-box
+  & .container
+    padding 0 58px
+    & .row
+      display flex
+      flex-direction row
+      justify-content space-between
 
-/* 1.1  Sub-name */
+/* 7.1. Footer nav */
+.footer-nav-title
+  font-family 'Bebas Neue'
+  font-size 27px
+  color #fff
+
+.footer-nav-link
+  font-size 15px;
+  color #fff
+  text-decoration none
+  line-height 1.867
+
+/* 7.2. Copyright */
+.copyright
+  height 46px
+  color #fff
+  text-align center
+  line-height 46px
+  background main-green-2
